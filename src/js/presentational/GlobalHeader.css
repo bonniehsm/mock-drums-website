@@ -1,0 +1,126 @@
+/******* GLOBAL CSS STYLES *******/
+body { margin: 0px; }
+h1, h2, h3, h4, h5, h6, a, p, li, span {
+  font-family: sans-serif;
+}
+a { text-decoration: none; }
+a, p { color: #000; }
+/******* END GLOBAL CSS STYLES *******/
+
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.global-header {
+  background-color: #000;
+  position: relative;
+  letter-spacing: -0.5px;
+}
+
+.global-nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #000;
+}
+
+.global-nav-list li a{
+  color: #ccc;
+}
+.global-nav-list li a:hover{
+  color: #fff;
+}
+
+/* Customize flex items*/
+#gn-products, #gn-support, #gn-artists, #gn-blog, #gn-company{
+  margin-right: auto;
+}
+
+#gn-brand {
+  background-color: #ff5a00;
+}
+#gn-brand a {
+  color: #fff;
+}
+
+a:hover {
+  color: #999;
+}
+
+nav.global-nav ul li a {
+  display: block;
+  padding: 30px;
+  margin-top:3px;
+  line-height: 1;
+  text-decoration: none;
+  font-size: 0.77rem;
+}
+
+.global-nav li > a{
+  text-transform: uppercase;
+  position: relative;
+}
+
+.subMenuContainer {
+  width: 100%;
+  opacity: 0.95;
+  display: none;
+  z-index: 1;
+}
+
+.subMenu {
+  padding: 15px 0px;
+  margin-bottom: 30px;
+  height: 300px;
+  background-color: #fff;
+  font-size: 0.8rem;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: center;
+  align-content: flex-start;
+  flex-basis: 200px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.subMenuListItems {
+  margin-left: 30px;
+  cursor: pointer;
+  padding: 10px 0px;
+  width: 30%;
+  max-width: 300px;
+}
+
+.subMenuListItems:hover {
+  background-color: #e5e5e5;
+}
+
+.subMenuListItems:after {
+  content: ">";
+  float: right;
+  padding-right: 5px;
+}
+
+.subMenuListItems:nth-child(6n+1){
+  border-top: 1px solid lightgray;
+}
+
+.menu-col-1, .menu-col-2 {
+  border-bottom: 1px solid lightgray;
+}
+
+.showSubMenu {
+  display: block;
+  position: absolute;
+  /*
+  animation-name: showSubMenu;
+  animation-duration: 0.3s;
+  */
+}
+
+@keyframes showSubMenu {
+  100% { top: 0px; }
+}

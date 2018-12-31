@@ -1,0 +1,11 @@
+A container does data fetching and then renders its corresponding sub-component. That’s it.
+“Corresponding” meaning a component that shares the same name:
+StockWidgetContainer => StockWidget
+TagCloudContainer => TagCloud
+
+
+
+Why containers? (vs. component responsible for both fetching data and presenting)
+1) Reusability - can't be reused unless under the exact same circumstances
+2) Data Structure
+  - markup components should state expectations of the data they require. Use PropTypes for this
