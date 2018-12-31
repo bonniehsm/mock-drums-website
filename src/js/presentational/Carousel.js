@@ -26,9 +26,17 @@ class Carousel extends Component{
   render(){
     return(
       <div className="banner-carousel">
-        <div><img src="../../../assets/acoustic-drums.jpg" alt="Acoustic drums"/></div>
-        <div><img src="../../../assets/e-drums.jpg" alt="Electric drums"/></div>
-        <div><img src="../../../assets/piano.jpg" alt="Piano"/></div>
+        <div>
+          <a href=""><img src="../../../assets/acoustic-drums.jpg" alt="Acoustic drums"/></a>
+        </div>
+        <div>
+          <a href=""><img src="../../../assets/e-drums.jpg" alt="Electric drums"/></a>
+        </div>
+        <div>
+          <a href="">
+            <img src="../../../assets/piano.jpg" alt="Piano"/>
+          </a>
+          </div>
       </div>
     );
   }
