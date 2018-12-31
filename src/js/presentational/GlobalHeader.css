@@ -1,12 +1,3 @@
-/******* GLOBAL CSS STYLES *******/
-body { margin: 0px; }
-h1, h2, h3, h4, h5, h6, a, p, li, span {
-  font-family: sans-serif;
-}
-a { text-decoration: none; }
-a, p { color: #000; }
-/******* END GLOBAL CSS STYLES *******/
-
 ul {
   margin: 0px;
   padding: 0px;

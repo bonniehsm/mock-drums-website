@@ -14,11 +14,17 @@
 .content-tile {
   max-width: 380px;
   padding: 20px 10px;
+  min-height: 410px;
+  overflow: hidden;
 }
 
 .content-media {
   max-width: 100%;
   max-height: 100%;
+}
+
+.content-label {
+  letter-spacing: 0.6px;
 }
 
 .content-page-link {
@@ -33,12 +39,14 @@
   margin-right: 3px;
 }
 
-.hidden {
+.show{
+  display: block;
+}
+
+.hide {
   display: none;
 }
 
-/*** Figure ***/
-h5, h6 { font-weight: bold; }
-h6 {
-  color: #808080;
-}
+.order-1 { order: 1; }
+.order-2 { order: 2; }
+.order-3 { order: 3; }

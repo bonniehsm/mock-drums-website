@@ -1,0 +1,20 @@
+/******* GLOBAL CSS STYLES *******/
+body { margin: 0px; }
+h1, h2, h3, h4, h5, h6, a, p, li, span {
+  font-family: sans-serif;
+}
+h5 {
+  margin: 8px 0 5px;
+  font-weight: bold;
+  color: #808080;
+}
+
+h5 small {
+  margin-bottom: 6px;
+  color: #000;
+  display: block;
+}
+
+a { text-decoration: none; }
+a, p { color: #000; font-size: 0.8rem; }
+/******* END GLOBAL CSS STYLES *******/

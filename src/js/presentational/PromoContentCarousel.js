@@ -3,17 +3,20 @@ import React, { Component } from "react";
 import './PromoContentCarousel.css';
 
 function ContentTile(props){
-  console.log("contentTile");
+  //console.log("contentTile");
   //console.log(props.content);
   var content = props.content;
-  var style=`content-tile ${props.displayable}`;
+  console.log(`content-tile ${props.displayable} ${props.order}`);
+  var style=`content-tile ${props.displayable} ${props.order}`;
   return(
     <li className={style} key={props.contentId}>
       <figure>
         <figcaption>
           <img className="content-media" src={content.media}/>
-          <h5><small>{content.title}</small></h5>
-          <h6>{content.label}</h6>
+          <h5>
+            <small>{content.title}</small>
+            <span className="content-label">{content.label}</span>
+          </h5>
         </figcaption>
         <p>{content.summary}</p>
         <a className="content-page-link" href={content.link}>find out more</a>
