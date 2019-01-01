@@ -25,13 +25,22 @@ class Carousel extends Component{
       <div className="banner-carousel">
         <div>
           <a href=""><img src="../../src/images/banner/acoustic-drums.jpg" alt="Acoustic drums"/></a>
+          <h1 className="banner-text">Acoustic Drum Kits
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+          </h1>
         </div>
         <div>
-          <a href=""><img src="../../src/images/banner/e-drums.jpg" alt="Electric drums"/></a>
+          <a href=""><img src="../../src/images/banner/e-drums.jpg" alt="Electronic drums"/></a>
+          <h1 className="banner-text">V-Drums Kits
+            <p>Lorem ipsum dolor sit amet.</p>
+          </h1>
         </div>
         <div>
           <a href="">
             <img src="../../src/images/banner/piano.jpg" alt="Piano"/>
+            <h1 className="banner-text">Piano
+              <p>Lorem ipsum dolor sit amet, consectetur.</p>
+            </h1>
           </a>
           </div>
       </div>

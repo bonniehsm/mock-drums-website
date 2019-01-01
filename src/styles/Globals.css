@@ -3,6 +3,7 @@ body { margin: 0px; }
 h1, h2, h3, h4, h5, h6, a, p, li, span {
   font-family: sans-serif;
 }
+h6 { margin: 0px;}
 h5 {
   margin: 8px 0 5px;
   font-weight: bold;
