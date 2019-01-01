@@ -96,9 +96,9 @@ class PromoContentContainer extends Component {
   }
 
   slideNext(){
-    console.log("slideNext");
+    //console.log("slideNext");
     var displayable = this.state.displayable;
-    console.log(`displayable: ${displayable}`);
+    //console.log(`displayable: ${displayable}`);
     var contentLen = this.state.featuredProducts.length;
     //check if any index is equal to content.length-1
     var lastContentDisplayed = this.checkIfEndOfSlide(displayable);
@@ -109,16 +109,16 @@ class PromoContentContainer extends Component {
         return ++item;
       }
     });
-    console.log(`newIndices: ${newIndices}`);
+    //console.log(`newIndices: ${newIndices}`);
     this.setState({
       displayable: newIndices
     })
   }
 
   slidePrevious(){
-    console.log("slidePrevious");
+    //console.log("slidePrevious");
     var displayable = this.state.displayable;
-    console.log(`displayable: ${displayable}`);
+    //console.log(`displayable: ${displayable}`);
     var contentLen = this.state.featuredProducts.length;
     var firstContentDisplayed = this.checkIfStartOfSlide(displayable);
     var newIndices = displayable.map((item, index) => {
@@ -128,7 +128,7 @@ class PromoContentContainer extends Component {
         return --item;
       }
     });
-    console.log(`newIndices: ${newIndices}`);
+    //console.log(`newIndices: ${newIndices}`);
     this.setState({
       displayable: newIndices
     })

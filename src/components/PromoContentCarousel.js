@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //import ReactDOM from "react-dom";
-import './PromoContentCarousel.css';
+import '../../src/styles/PromoContentCarousel.css';
 
 function ContentTile(props){
   //console.log("contentTile");

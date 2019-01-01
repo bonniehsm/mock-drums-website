@@ -3,4 +3,4 @@ import GlobalHeaderContainer from "./containers/GlobalHeaderContainer";
 import CarouselContainer from "./containers/CarouselContainer";
 import PromoContentContainer from "./containers/PromoContentContainer";
 import Footer from "./containers/Footer";
-import './components/Globals.css';
+import './styles/Globals.css';

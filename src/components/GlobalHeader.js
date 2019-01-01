@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import './GlobalHeader.css';
+import '../../src/styles/GlobalHeader.css';
 
 function SubMenuListItems(props){
   const items = props.items;

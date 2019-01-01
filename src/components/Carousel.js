@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import ReactDom from "react-dom";
-import './Carousel.css';
+import '../../src/styles/Carousel.css';
 
 class Carousel extends Component{
   constructor(props){
