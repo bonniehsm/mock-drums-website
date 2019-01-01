@@ -27,14 +27,14 @@ class Carousel extends Component{
     return(
       <div className="banner-carousel">
         <div>
-          <a href=""><img src="../../../assets/acoustic-drums.jpg" alt="Acoustic drums"/></a>
+          <a href=""><img src="../../src/images/banner/acoustic-drums.jpg" alt="Acoustic drums"/></a>
         </div>
         <div>
-          <a href=""><img src="../../../assets/e-drums.jpg" alt="Electric drums"/></a>
+          <a href=""><img src="../../src/images/banner/e-drums.jpg" alt="Electric drums"/></a>
         </div>
         <div>
           <a href="">
-            <img src="../../../assets/piano.jpg" alt="Piano"/>
+            <img src="../../src/images/banner/piano.jpg" alt="Piano"/>
           </a>
           </div>
       </div>

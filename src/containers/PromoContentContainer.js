@@ -1,39 +1,39 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
-import { ContentTile } from "../../presentational/PromoContentCarousel";
+import { ContentTile } from "../components/PromoContentCarousel";
 
 const featuredProducts = [
     {
-      media: "../../../../assets/featured/piano.jpg",
+      media: "../../src/images/featured/piano.jpg",
       title: "Featured Product",    //remove this and make this the object label
       label: "LX700 Series",
       summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra lobortis tincidunt.",
       link: "#"
     },
     {
-      media: "../../../../assets/featured/electronic-keyboard.jpg",
+      media: "../../src/images/featured/electronic-keyboard.jpg",
       title: "Featured Product",
       label: "JUNO-DS",
       summary: "Duis dignissim mollis felis eu lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing.",
       link: "#"
     },
     {
-      media: "../../../../assets/featured/mixer.jpg",
+      media: "../../src/images/featured/mixer.jpg",
       title: "Featured Product",
       label: "VT-4",
       summary: "In non enim vitae augue ullamcorper a sit amet metus. Morbi efficitur tortor.",
       link: "#"
     },
     {
-      media: "../../../../assets/featured/roland.jpg",
+      media: "../../src/images/featured/roland.jpg",
       title: "Featured Product",
       label: "TD-1DMK",
       summary: "Phasellus varius tincidunt lobortis, justo mi mattis est, vitae condimentum neque dolor vel.",
       link: "#"
     },
     {
-      media: "../../../../assets/featured/phone-app.jpg",
+      media: "../../src/images/featured/phone-app.jpg",
       title: "Featured Product",
       label: "Piano Every Day",
       summary: "Duis rutrum efficitur ligula, vel efficitur diam ultrices. Fusce mi lacus, hendrerit nec molestie.",

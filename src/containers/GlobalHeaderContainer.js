@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import GlobalHeader from "../../presentational/GlobalHeader"
+import GlobalHeader from "../components/GlobalHeader"
 
 let brand = [];
 
