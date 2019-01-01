@@ -5,12 +5,9 @@ import '../../src/styles/Carousel.css';
 class Carousel extends Component{
   constructor(props){
     super(props);
-
   }
 
   componentDidMount(){
-    console.log("carousel component mounted");
-
     $('.banner-carousel').slick({
       autoplay: true,
       arrows: true,
