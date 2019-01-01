@@ -119,8 +119,6 @@ class PromoContentContainer extends Component {
     super(props);
     this.state = {
       displayable: [0, 1, 2],
-      featuredVideos,
-      //newProducts: {}
     }
     this.slideNext = this.slideNext.bind(this);
     this.slidePrevious = this.slidePrevious.bind(this);
@@ -130,6 +128,7 @@ class PromoContentContainer extends Component {
   slideNext(){
     var displayable = this.state.displayable;
     var contentLen = this.props.content.length;
+      //return if 3 or less content dislayed
     if(contentLen <=3 ) { return; }
     //check if any index is equal to content.length-1
     var lastContentDisplayed = this.checkIfEndOfSlide(displayable);
@@ -148,7 +147,9 @@ class PromoContentContainer extends Component {
   slidePrevious(){
     var displayable = this.state.displayable;
     var contentLen = this.props.content.length;
+    //return if 3 or less content dislayed
     if(contentLen <= 3 ) { return; }
+    //check if any index is at 0
     var firstContentDisplayed = this.checkIfStartOfSlide(displayable);
     var newIndices = displayable.map((item, index) => {
       if(firstContentDisplayed > -1){
@@ -157,7 +158,6 @@ class PromoContentContainer extends Component {
         return --item;
       }
     });
-    //console.log(`newIndices: ${newIndices}`);
     this.setState({
       displayable: newIndices
     })
@@ -178,8 +178,7 @@ class PromoContentContainer extends Component {
   }
 
   render(){
-  var { displayable, content, featuredVideos, newProducts } = this.state;
-    //var displayable = this.state.displayable;
+    var displayable = this.state.displayable;
     return(
       <div>
         <PromoContentCarousel

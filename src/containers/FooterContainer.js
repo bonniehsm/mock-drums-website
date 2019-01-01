@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { FooterLegalLinks } from "../components/Footer";
 
 const legal = [
   "Privacy Statement",
@@ -12,13 +13,12 @@ const legal = [
 class FooterContainer extends Component{
   constructor(props){
     super(props);
-    this.state = {
-      legal: legal,
-    }
   }
   render(){
     return (
-      <div></div>
+      <div className="global-footer">
+        <FooterLegalLinks legal={legal}/>
+      </div>
     )
   }
 }

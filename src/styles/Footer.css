@@ -1,0 +1,25 @@
+.gf-legal {
+  padding: 40px 30px 70px;
+}
+
+.gf-legal-list {
+  display: flex;
+}
+
+.legal-links {
+  margin-right: 15px;
+}
+
+.legal-links:not(:last-child)::after {
+  content: "|";
+  padding-left: 15px;
+  color: #666;
+}
+
+.legal-links a {
+  color: #666;
+}
+
+.legal-links a:hover {
+  color: #999;
+}
