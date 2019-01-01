@@ -3,14 +3,11 @@ import React, { Component } from "react";
 import '../../src/styles/PromoContentCarousel.css';
 
 function ContentTile(props){
-  console.log(props.media);
   var content = props.content;
   var media = (() => {
     if(props.media == "image"){
-      console.log(`image`);
-      return (<img className="content-media" src={content.media}/>)
+      return (<img className="content-media" src={content.media}/>);
     }else{
-      console.log("video");
       return (
           <iframe
             src={content.media}
@@ -18,11 +15,10 @@ function ContentTile(props){
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen>
           </iframe>
-      )
+      );
     }
   })();
-  console.log(media);
-  console.log(`content-tile ${props.displayable} ${props.order}`);
+  //console.log(`content-tile ${props.displayable} ${props.order}`);
   var style=`content-tile ${props.displayable} ${props.order}`;
   return(
     <li className={style} key={props.contentId}>

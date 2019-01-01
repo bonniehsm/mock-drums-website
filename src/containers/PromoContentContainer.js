@@ -64,10 +64,10 @@ const featuredVideos = [
     link: "#"
   },
   {
-    media: "https://youtube.com/embed/IaOEb05b6YE",
+    media: "https://www.youtube.com/embed/44-dZpZ81iY",
     title: "Featured Video",
-    label: "GO:MIXER PRO",
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce egestas mattis risus, sit amet varius felis aliquet ac. Donec non.",
+    label: "Roland PM Series Personal Monitor for V-Drums",
+    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla varius placerat. Nam tincidunt congue libero et fringilla. Nam consequat eleifend euismod.",
     link: "#"
   },
 ];
@@ -119,7 +119,6 @@ class PromoContentContainer extends Component {
     super(props);
     this.state = {
       displayable: [0, 1, 2],
-      featuredProducts,
       featuredVideos,
       //newProducts: {}
     }
@@ -129,10 +128,9 @@ class PromoContentContainer extends Component {
   }
 
   slideNext(){
-    //console.log("slideNext");
     var displayable = this.state.displayable;
-    //console.log(`displayable: ${displayable}`);
-    var contentLen = this.state.featuredProducts.length;
+    var contentLen = this.props.content.length;
+    if(contentLen <=3 ) { return; }
     //check if any index is equal to content.length-1
     var lastContentDisplayed = this.checkIfEndOfSlide(displayable);
     var newIndices = displayable.map((item, index) => {
@@ -142,17 +140,15 @@ class PromoContentContainer extends Component {
         return ++item;
       }
     });
-    //console.log(`newIndices: ${newIndices}`);
     this.setState({
       displayable: newIndices
     })
   }
 
   slidePrevious(){
-    //console.log("slidePrevious");
     var displayable = this.state.displayable;
-    //console.log(`displayable: ${displayable}`);
-    var contentLen = this.state.featuredProducts.length;
+    var contentLen = this.props.content.length;
+    if(contentLen <= 3 ) { return; }
     var firstContentDisplayed = this.checkIfStartOfSlide(displayable);
     var newIndices = displayable.map((item, index) => {
       if(firstContentDisplayed > -1){
@@ -171,7 +167,7 @@ class PromoContentContainer extends Component {
   // or -1 if it is not displayed
   checkIfEndOfSlide(displayedIndices){
     var maxIndex = Math.max(...displayedIndices);
-    return maxIndex == this.state.featuredProducts.length-1 ? maxIndex : -1;
+    return maxIndex == this.props.content.length-1 ? maxIndex : -1;
   }
 
   //this function returns an integer representing the index of the start content displayed
@@ -182,24 +178,15 @@ class PromoContentContainer extends Component {
   }
 
   render(){
-
-    /* render a component for each featured product*/
-    var { displayable, featuredProducts, featuredVideos, newProducts } = this.state;
+  var { displayable, content, featuredVideos, newProducts } = this.state;
+    //var displayable = this.state.displayable;
     return(
       <div>
         <PromoContentCarousel
-          contentType="featuredProducts"
-          media={mediaType[0]}
+          contentType={this.props.contentType}
+          media={this.props.mediaType}
           displayable={displayable}
-          content={featuredProducts}
-          slideNext={this.slideNext}
-          slidePrev={this.slidePrevious}
-        />
-        <PromoContentCarousel
-          contentType="featuredProducts"
-          media={mediaType[1]}
-          displayable={displayable}
-          content={featuredVideos}
+          content={this.props.content}
           slideNext={this.slideNext}
           slidePrev={this.slidePrevious}
         />
@@ -211,4 +198,10 @@ class PromoContentContainer extends Component {
 
 export default PromoContentContainer;
 
-ReactDOM.render(<PromoContentContainer/>, document.getElementById('promo-content'));
+ReactDOM.render(
+  <PromoContentContainer content={featuredProducts} mediaType={mediaType[0]} contentType="featuredProducts"/>,
+  document.getElementById('promo-products')
+);
+
+ReactDOM.render(<PromoContentContainer content={featuredVideos} mediaType={mediaType[1]} contentType="featuredVideos"/>,
+  document.getElementById('promo-videos'));
