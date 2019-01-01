@@ -41,8 +41,40 @@ const featuredProducts = [
     }
 ];
 
-//const featuredVideo = {};
+const featuredVideos = [
+  {
+    media: "https://youtube.com/embed/EeOCyyP8Vq4",
+    title: "Featured Video",
+    label: "V-Drums TD-1DMK with all double-mesh head pads",
+    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas ornare nunc id varius. Duis mattis dolor metus, et feugiat.",
+    link: "#"
+  },
+  {
+    media: "https://youtube.com/embed/AU9eIo1doE0",
+    title: "Featured Video",
+    label: "Roland GP609 Digital Grand",
+    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel est ultrices, venenatis justo a, vehicula odio. Nulla facilisi. Maecenas.",
+    link: "#"
+  },
+  {
+    media: "https://youtube.com/embed/IaOEb05b6YE",
+    title: "Featured Video",
+    label: "GO:MIXER PRO",
+    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lectus sit amet tellus aliquam tincidunt. Nulla consequat tempor.",
+    link: "#"
+  },
+  {
+    media: "https://youtube.com/embed/IaOEb05b6YE",
+    title: "Featured Video",
+    label: "GO:MIXER PRO",
+    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce egestas mattis risus, sit amet varius felis aliquet ac. Donec non.",
+    link: "#"
+  },
+];
+
 //const newProducts = {};
+
+const mediaType = { 0: "image", 1: "video" };
 
 class PromoContentCarousel extends Component {
   constructor(props){
@@ -62,6 +94,7 @@ class PromoContentCarousel extends Component {
       return(
         <ContentTile
           content={item}
+          media={this.props.media}
           key={`${contentTileId}-${index}`}
           contentId={`${this.props.contentType}-${index}`}
           displayable={display}
@@ -87,8 +120,8 @@ class PromoContentContainer extends Component {
     this.state = {
       displayable: [0, 1, 2],
       featuredProducts,
-      featuredVideos: {},
-      newProducts: {}
+      featuredVideos,
+      //newProducts: {}
     }
     this.slideNext = this.slideNext.bind(this);
     this.slidePrevious = this.slidePrevious.bind(this);
@@ -149,16 +182,28 @@ class PromoContentContainer extends Component {
   }
 
   render(){
+
     /* render a component for each featured product*/
     var { displayable, featuredProducts, featuredVideos, newProducts } = this.state;
     return(
+      <div>
         <PromoContentCarousel
           contentType="featuredProducts"
+          media={mediaType[0]}
           displayable={displayable}
           content={featuredProducts}
           slideNext={this.slideNext}
           slidePrev={this.slidePrevious}
         />
+        <PromoContentCarousel
+          contentType="featuredProducts"
+          media={mediaType[1]}
+          displayable={displayable}
+          content={featuredVideos}
+          slideNext={this.slideNext}
+          slidePrev={this.slidePrevious}
+        />
+      </div>
     );
   }
 }

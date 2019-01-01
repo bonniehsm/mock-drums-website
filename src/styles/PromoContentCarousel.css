@@ -31,6 +31,10 @@
   text-transform: uppercase;
 }
 
+.content-page-link:hover {
+  color: #ff5a00;
+}
+
 .content-page-link::before{
   content: '>';
   background-color: #000;
