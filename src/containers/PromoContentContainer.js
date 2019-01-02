@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
 import { ContentTile, PromoContentCarousel } from "../components/PromoContentCarousel";
+import { store } from "../redux/store";
 
 const featuredProducts = [
     {
@@ -151,6 +152,8 @@ class PromoContentContainer extends Component {
     );
   }
 }
+
+      //displayable={store.getState().displayable}
 
 export default PromoContentContainer;
 
