@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-//import ReactDOM from "react-dom";
+
 import '../../src/styles/PromoContentCarousel.css';
 
 function ContentTile(props){
   var content = props.content;
   var media = (() => {
-    if(props.media == "image"){
+    if(props.media == "MEDIA_TYPE_IMAGE"){
       return (<img className="content-media" src={content.media}/>);
     }else{
       return (
@@ -18,7 +18,6 @@ function ContentTile(props){
       );
     }
   })();
-  //console.log(`content-tile ${props.displayable} ${props.order}`);
   var style=`content-tile ${props.displayable} ${props.order}`;
   return(
     <li className={style} key={props.contentId}>
@@ -37,4 +36,42 @@ function ContentTile(props){
   );
 }
 
-export { ContentTile };
+class PromoContentCarousel extends Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    var content = this.props.content;
+    var contentTileId = `${this.props.contentType}-card`;
+    var contentRow = content.map((item, index)=>{
+      var display = this.props.displayable.includes(index) ? "show" : "hide";
+      var displayOrder;
+      if(display === "show"){
+        displayOrder = this.props.displayable.indexOf(index);
+      }else{
+        displayOrder = content.length * 2;
+      }
+      return(
+        <ContentTile
+          content={item}
+          media={this.props.media}
+          key={`${contentTileId}-${index}`}
+          contentId={`${this.props.contentType}-${index}`}
+          displayable={display}
+          order={`order-${displayOrder}`}
+        />
+      )
+    });
+    return(
+      <div className="content-carousel">
+        <button className="slick-prev slick-arrow" aria-label="Previous" type="button" onClick={(e)=>this.props.slide("back", e)}>&lt;</button>
+          <ul className="content-row">
+              {contentRow}
+          </ul>
+        <button className="slick-next slick-arrow" aria-label="Next" type="button" onClick={(e)=>this.props.slide("next", e)}>&gt;</button>
+      </div>
+    );
+  }
+}
+
+export { ContentTile, PromoContentCarousel };

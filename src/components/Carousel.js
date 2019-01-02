@@ -8,6 +8,7 @@ class Carousel extends Component{
   }
 
   componentDidMount(){
+    //initialize slick image slider
     $('.banner-carousel').slick({
       autoplay: true,
       arrows: true,

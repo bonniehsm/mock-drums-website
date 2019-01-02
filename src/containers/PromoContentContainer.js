@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
-import { ContentTile } from "../components/PromoContentCarousel";
+import { ContentTile, PromoContentCarousel } from "../components/PromoContentCarousel";
 
 const featuredProducts = [
     {
@@ -74,45 +74,8 @@ const featuredVideos = [
 
 //const newProducts = {};
 
-const mediaType = { 0: "image", 1: "video" };
-
-class PromoContentCarousel extends Component {
-  constructor(props){
-    super(props);
-  }
-  render(){
-    var content = this.props.content;
-    var contentTileId = `${this.props.contentType}-card`;
-    var contentRow = content.map((item, index)=>{
-      var display = this.props.displayable.includes(index) ? "show" : "hide";
-      var displayOrder;
-      if(display === "show"){
-        displayOrder = this.props.displayable.indexOf(index);
-      }else{
-        displayOrder = content.length * 2;
-      }
-      return(
-        <ContentTile
-          content={item}
-          media={this.props.media}
-          key={`${contentTileId}-${index}`}
-          contentId={`${this.props.contentType}-${index}`}
-          displayable={display}
-          order={`order-${displayOrder}`}
-        />
-      )
-    });
-    return(
-      <div className="content-carousel">
-        <button className="slick-prev slick-arrow" aria-label="Previous" type="button" onClick={(e)=>this.props.slide("back", e)}>&lt;</button>
-          <ul className="content-row">
-              {contentRow}
-          </ul>
-        <button className="slick-next slick-arrow" aria-label="Next" type="button" onClick={(e)=>this.props.slide("next", e)}>&gt;</button>
-      </div>
-    );
-  }
-}
+const MEDIA_TYPE_IMAGE = "MEDIA_TYPE_IMAGE";
+const MEDIA_TYPE_VIDEO = "MEDIA_TYPE_VIDEO";
 
 class PromoContentContainer extends Component {
   constructor(props){
@@ -124,6 +87,8 @@ class PromoContentContainer extends Component {
     this.checkIfEndOfSlide = this.checkIfEndOfSlide.bind(this);
   }
 
+// this function handles the onclick events for the next and back arrows for the carousel
+//  arg: string value of either "next" or "back"
   navigateSlide(dir){
     var contentLen = this.props.content.length;
     //return if 3 or less content dislayed
@@ -191,10 +156,10 @@ export default PromoContentContainer;
 
 // render featured products
 ReactDOM.render(
-  <PromoContentContainer content={featuredProducts} mediaType={mediaType[0]} contentType="featuredProducts"/>,
+  <PromoContentContainer content={featuredProducts} mediaType={MEDIA_TYPE_IMAGE} contentType="featuredProducts"/>,
   document.getElementById('promo-products')
 );
 
 //r render featured videos
-ReactDOM.render(<PromoContentContainer content={featuredVideos} mediaType={mediaType[1]} contentType="featuredVideos"/>,
+ReactDOM.render(<PromoContentContainer content={featuredVideos} mediaType={MEDIA_TYPE_VIDEO} contentType="featuredVideos"/>,
   document.getElementById('promo-videos'));

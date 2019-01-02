@@ -24,7 +24,8 @@ function SubMenuContainer(props){
 function GlobalHeaderNavigation(props){
   const hover = props.hover;
   const list = props.list;
-  //The Object.keys() method returns an array of a given object's own property names
+
+  //iterate over keys in the navigation object and for each item, return a list item element
   const navTop = Object.keys(list).map((item, index) => {
       var elementId = "gn-" + item;
       return (
@@ -33,10 +34,11 @@ function GlobalHeaderNavigation(props){
         </li>
       )
   });
+
   const subMenu = Object.keys(list).map((item, index) => {
     let id = `sm-${index}`;
     let cssClassName = hover == id ? "showSubMenu" : "none";
-    //console.log(cssClassName);
+    //create submenu container if there is an additional list
     if(list[item].length){
       return <SubMenuContainer id={id} cssClassName={cssClassName} key={`sm-${item}`} list={list[item]} index={index} mouseLeave={props.mouseLeave}/>
     }
@@ -53,48 +55,4 @@ function GlobalHeaderNavigation(props){
   );
 }
 
-class GlobalHeader extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      // brand, products, news & events, company, support, artists, account
-      menu: props.menu,
-      hover: "",
-    };
-    this.hoverOn = this.hoverOn.bind(this);
-    this.hoverOff = this.hoverOff.bind(this);
-  } //constructor
-
-  hoverOn(index){
-    var elementId = `sm-${index}`;
-    var element = document.getElementById(elementId);
-    //console.log(element);
-    if(element){
-      this.setState({
-        hover: elementId
-      })
-    }else{
-      this.setState({
-        hover: ""
-      });
-    }
-  }
-
-  hoverOff(index){
-  //console.log("hoverOff");
-    var relatedTarget = event.relatedTarget.className;
-    var elementId = `sm-${index}`;
-    if(relatedTarget !== "subMenu"){
-      this.setState({hover:""});
-    }
-  }
-
-  render(){
-    const { menu, hover } = this.state;
-    return(
-      <GlobalHeaderNavigation list={menu} hover={hover} mouseOver={this.hoverOn} mouseLeave={this.hoverOff}/>
-    );
-  }
-}
-
-export default GlobalHeader;
+export default GlobalHeaderNavigation;
