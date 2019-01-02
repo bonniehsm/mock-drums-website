@@ -104,11 +104,11 @@ class PromoContentCarousel extends Component {
     });
     return(
       <div className="content-carousel">
-        <button className="slick-prev slick-arrow" aria-label="Previous" type="button" onClick={this.props.slidePrev}>&lt;</button>
+        <button className="slick-prev slick-arrow" aria-label="Previous" type="button" onClick={(e)=>this.props.slide("back", e)}>&lt;</button>
           <ul className="content-row">
               {contentRow}
           </ul>
-        <button className="slick-next slick-arrow" aria-label="Next" type="button" onClick={this.props.slideNext}>&gt;</button>
+        <button className="slick-next slick-arrow" aria-label="Next" type="button" onClick={(e)=>this.props.slide("next", e)}>&gt;</button>
       </div>
     );
   }
@@ -120,47 +120,38 @@ class PromoContentContainer extends Component {
     this.state = {
       displayable: [0, 1, 2],
     }
-    this.slideNext = this.slideNext.bind(this);
-    this.slidePrevious = this.slidePrevious.bind(this);
+    this.navigateSlide = this.navigateSlide.bind(this);
     this.checkIfEndOfSlide = this.checkIfEndOfSlide.bind(this);
   }
 
-
-  slideNext(){
-    var contentLen = this.props.content.length;
-    //return if 3 or less content dislayed
-    if(contentLen <=3 ) { return; }
-
-    var displayable = this.state.displayable;
-    var lastContentDisplayed = this.checkIfEndOfSlide(displayable);
-    var newIndices = displayable.map((item, index) => {
-      if(lastContentDisplayed > -1){
-        //content at end of slide [content.length-1]
-        return lastContentDisplayed == item ? 0 : ++item;
-      }else{
-        return ++item;
-      }
-    });
-    this.setState({
-      displayable: newIndices
-    })
-  }
-
-  slidePrevious(){
+  navigateSlide(dir){
     var contentLen = this.props.content.length;
     //return if 3 or less content dislayed
     if(contentLen <= 3 ) { return; }
-
     var displayable = this.state.displayable;
-    var firstContentDisplayed = this.checkIfStartOfSlide(displayable);
-    var newIndices = displayable.map((item, index) => {
-      if(firstContentDisplayed > -1){
-        //content at index 0 of content[] is displayed
-        return firstContentDisplayed == item ? contentLen-1 : --item;
-      }else{
-        return --item;
-      }
-    });
+    var newIndices;
+
+    if(dir==="next"){
+      var lastContentDisplayed = this.checkIfEndOfSlide(displayable);
+      newIndices = displayable.map((item, index) => {
+        if(lastContentDisplayed > -1){
+          //content at end of slide [content.length-1]
+          return lastContentDisplayed == item ? 0 : ++item;
+        }else{
+          return ++item;
+        }
+      });
+    }else if(dir==="back"){
+      var firstContentDisplayed = this.checkIfStartOfSlide(displayable);
+      newIndices = displayable.map((item, index) => {
+        if(firstContentDisplayed > -1){
+          //content at index 0 of content[] is displayed
+          return firstContentDisplayed == item ? contentLen-1 : --item;
+        }else{
+          return --item;
+        }
+      });
+    }
     this.setState({
       displayable: newIndices
     })
@@ -189,14 +180,12 @@ class PromoContentContainer extends Component {
           media={this.props.mediaType}
           displayable={displayable}
           content={this.props.content}
-          slideNext={this.slideNext}
-          slidePrev={this.slidePrevious}
+          slide={this.navigateSlide}
         />
       </div>
     );
   }
 }
-
 
 export default PromoContentContainer;
 
