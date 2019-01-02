@@ -1,5 +1,5 @@
 /******* GLOBAL CSS STYLES *******/
-body { margin: 0px; }
+body { margin: 0px; background-color: #e5e5e5;}
 h1, h2, h3, h4, h5, h6, a, p, li, span {
   font-family: sans-serif;
 }
@@ -15,7 +15,12 @@ h5 small {
   color: #000;
   display: block;
 }
-
 a { text-decoration: none; }
 a, p { color: #000; font-size: 0.8rem; }
+.page-container {
+  max-width: 1650px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 0 20px;
+}
 /******* END GLOBAL CSS STYLES *******/

@@ -125,15 +125,17 @@ class PromoContentContainer extends Component {
     this.checkIfEndOfSlide = this.checkIfEndOfSlide.bind(this);
   }
 
+
   slideNext(){
-    var displayable = this.state.displayable;
     var contentLen = this.props.content.length;
-      //return if 3 or less content dislayed
+    //return if 3 or less content dislayed
     if(contentLen <=3 ) { return; }
-    //check if any index is equal to content.length-1
+
+    var displayable = this.state.displayable;
     var lastContentDisplayed = this.checkIfEndOfSlide(displayable);
     var newIndices = displayable.map((item, index) => {
-      if(lastContentDisplayed > -1){      //at end of slide
+      if(lastContentDisplayed > -1){
+        //content at end of slide [content.length-1]
         return lastContentDisplayed == item ? 0 : ++item;
       }else{
         return ++item;
@@ -145,14 +147,15 @@ class PromoContentContainer extends Component {
   }
 
   slidePrevious(){
-    var displayable = this.state.displayable;
     var contentLen = this.props.content.length;
     //return if 3 or less content dislayed
     if(contentLen <= 3 ) { return; }
-    //check if any index is at 0
+
+    var displayable = this.state.displayable;
     var firstContentDisplayed = this.checkIfStartOfSlide(displayable);
     var newIndices = displayable.map((item, index) => {
       if(firstContentDisplayed > -1){
+        //content at index 0 of content[] is displayed
         return firstContentDisplayed == item ? contentLen-1 : --item;
       }else{
         return --item;
@@ -197,10 +200,12 @@ class PromoContentContainer extends Component {
 
 export default PromoContentContainer;
 
+// render featured products
 ReactDOM.render(
   <PromoContentContainer content={featuredProducts} mediaType={mediaType[0]} contentType="featuredProducts"/>,
   document.getElementById('promo-products')
 );
 
+//r render featured videos
 ReactDOM.render(<PromoContentContainer content={featuredVideos} mediaType={mediaType[1]} contentType="featuredVideos"/>,
   document.getElementById('promo-videos'));
