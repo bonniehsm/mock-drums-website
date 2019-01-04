@@ -64,11 +64,11 @@ class PromoContentCarousel extends Component {
     });
     return(
       <div className="content-carousel">
-        <button className="slick-prev slick-arrow" aria-label="Previous" type="button" onClick={(e)=>this.props.slide("back", e)}>&lt;</button>
+        <button className="slick-prev slick-arrow" aria-label="Previous" type="button" onClick={(e)=>this.props.slide("back", this.props.displayable, this.props.content, e)}>&lt;</button>
           <ul className="content-row">
               {contentRow}
           </ul>
-        <button className="slick-next slick-arrow" aria-label="Next" type="button" onClick={(e)=>this.props.slide("next", e)}>&gt;</button>
+        <button className="slick-next slick-arrow" aria-label="Next" type="button" onClick={(e)=>this.props.slide("next", this.props.displayable, this.props.content, e)}>&gt;</button>
       </div>
     );
   }

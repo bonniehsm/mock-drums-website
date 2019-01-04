@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
 import { ContentTile, PromoContentCarousel } from "../components/PromoContentCarousel";
 import { store } from "../redux/store";
+import { navigateSlide } from "../redux/actions";
+import { getDisplayedIndices, getContent } from "../redux/reducers"
 
 const featuredProducts = [
     {
@@ -81,79 +83,23 @@ const MEDIA_TYPE_VIDEO = "MEDIA_TYPE_VIDEO";
 class PromoContentContainer extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      displayable: [0, 1, 2],
-    }
-    this.navigateSlide = this.navigateSlide.bind(this);
-    this.checkIfEndOfSlide = this.checkIfEndOfSlide.bind(this);
-  }
-
-// this function handles the onclick events for the next and back arrows for the carousel
-//  arg: string value of either "next" or "back"
-  navigateSlide(dir){
-    var contentLen = this.props.content.length;
-    //return if 3 or less content dislayed
-    if(contentLen <= 3 ) { return; }
-    var displayable = this.state.displayable;
-    var newIndices;
-
-    if(dir==="next"){
-      var lastContentDisplayed = this.checkIfEndOfSlide(displayable);
-      newIndices = displayable.map((item, index) => {
-        if(lastContentDisplayed > -1){
-          //content at end of slide [content.length-1]
-          return lastContentDisplayed == item ? 0 : ++item;
-        }else{
-          return ++item;
-        }
-      });
-    }else if(dir==="back"){
-      var firstContentDisplayed = this.checkIfStartOfSlide(displayable);
-      newIndices = displayable.map((item, index) => {
-        if(firstContentDisplayed > -1){
-          //content at index 0 of content[] is displayed
-          return firstContentDisplayed == item ? contentLen-1 : --item;
-        }else{
-          return --item;
-        }
-      });
-    }
-    this.setState({
-      displayable: newIndices
-    })
-  }
-
-  //this function returns an integer representing the index of the last content displayed
-  // or -1 if it is not displayed
-  checkIfEndOfSlide(displayedIndices){
-    var maxIndex = Math.max(...displayedIndices);
-    return maxIndex == this.props.content.length-1 ? maxIndex : -1;
-  }
-
-  //this function returns an integer representing the index of the start content displayed
-  // or -1 if it is not displayed
-  checkIfStartOfSlide(displayedIndices){
-    var minIndex = Math.min(...displayedIndices);
-    return minIndex == 0 ? minIndex  : -1;
+    //this.navigateSlide = this.navigateSlide.bind(this);
   }
 
   render(){
-    var displayable = this.state.displayable;
     return(
       <div>
         <PromoContentCarousel
           contentType={this.props.contentType}
           media={this.props.mediaType}
-          displayable={displayable}
+          displayable={store.getState().displayable}
           content={this.props.content}
-          slide={this.navigateSlide}
+          slide={navigateSlide}
         />
       </div>
     );
   }
 }
-
-      //displayable={store.getState().displayable}
 
 export default PromoContentContainer;
 
