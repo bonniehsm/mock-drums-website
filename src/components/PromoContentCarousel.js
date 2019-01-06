@@ -21,7 +21,7 @@ function ContentTile(props){
   var style=`content-tile ${props.displayable} ${props.order}`;
   return(
     <li className={style} key={props.contentId}>
-      <figure>
+      <figure className={props.media=="MEDIA_TYPE_IMAGE" ? "figure-img" : "figure-video"}>
         <figcaption>
           {media}
           <h5>

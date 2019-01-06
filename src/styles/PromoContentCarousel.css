@@ -1,4 +1,4 @@
-.content-carousel{
+.content-carousel {
   margin: 20px 0px;
   position: relative;
 }
@@ -18,23 +18,23 @@
   overflow: hidden;
 }
 
-.content-media {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.content-tile figcaption {
+.figure-video figcaption {
   position: relative;
   overflow: hidden;
-  padding-top: 56.25%;    /* to keep aspect ratio 16:9 */
+  padding-top: 56.25%;
+  /* to keep aspect ratio 16:9 */
 }
-
 .content-tile figcaption iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.content-media {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .content-label {
@@ -44,20 +44,18 @@
 .content-page-link {
   text-transform: uppercase;
 }
-
 .content-page-link:hover {
   color: #ff5a00;
 }
-
-.content-page-link::before{
-  content: '>';
+.content-page-link::before {
+  content: ">";
   background-color: #000;
   color: #fff;
   padding: 1px 4px;
   margin-right: 3px;
 }
 
-.show{
+.show {
   display: block;
 }
 
@@ -65,6 +63,17 @@
   display: none;
 }
 
-.order-1 { order: 1; }
-.order-2 { order: 2; }
-.order-3 { order: 3; }
+/** Flex items order **/
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+.order-3 {
+  order: 3;
+}
+
+/*# sourceMappingURL=promocontentcarousel.css.map */
