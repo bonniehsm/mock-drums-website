@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import '../../src/styles/GlobalHeader.css';
 
 function SubMenuListItems(props){
+  console.log(`SubMenuListItems ${props.items}`);
   const items = props.items;
   const listItems = items.map((item, index) => {
     var classes = "subMenuListItems menu-col" + (index < 6 ? "-1" : "-2");
@@ -22,15 +23,19 @@ function SubMenuContainer(props){
 }
 
 function GlobalHeaderNavigation(props){
-  const hover = props.hover;
   const list = props.list;
+  const loggedIn = props.loggedIn;
+  const hover = props.hover;
 
   //iterate over keys in the navigation object and for each item, return a list item element
   const navTop = Object.keys(list).map((item, index) => {
+    console.log(item);
       var elementId = "gn-" + item;
       return (
         <li key={`gn-${item}`} id={elementId}>
-          <a href=""  onMouseEnter={(e)=>props.mouseOver(index, e)} onMouseLeave={(e)=>props.mouseLeave(index, e)}>{item}</a>
+          <a href="#"  onMouseEnter={(e)=>props.mouseOver(index, e)} onMouseLeave={(e)=>props.mouseLeave(index, e)}>
+            {list[item].type === "ICON" ? <img className="menu-icon" src={list[item].display}/> : list[item].display }
+          </a>
         </li>
       )
   });
@@ -39,8 +44,8 @@ function GlobalHeaderNavigation(props){
     let id = `sm-${index}`;
     let cssClassName = hover == id ? "showSubMenu" : "none";
     //create submenu container if there is an additional list
-    if(list[item].length){
-      return <SubMenuContainer id={id} cssClassName={cssClassName} key={`sm-${item}`} list={list[item]} index={index} mouseLeave={props.mouseLeave}/>
+    if(list[item].submenu !== null){
+      return <SubMenuContainer id={id} cssClassName={cssClassName} key={`sm-${item}`} list={list[item].submenu} index={index} mouseLeave={props.mouseLeave}/>
     }
   });
   return(

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
 import { ContentTile, PromoContentCarousel } from "../components/PromoContentCarousel";
-import { store } from "../redux/store";
 
 const featuredProducts = [
     {
@@ -75,8 +74,10 @@ const featuredVideos = [
 
 //const newProducts = {};
 
-const MEDIA_TYPE_IMAGE = "MEDIA_TYPE_IMAGE";
-const MEDIA_TYPE_VIDEO = "MEDIA_TYPE_VIDEO";
+const MEDIA_TYPE = {
+  "IMAGE": "MEDIA_TYPE_IMAGE",
+  "VIDEO": "MEDIA_TYPE_VIDEO"
+}
 
 class PromoContentContainer extends Component {
   constructor(props){
@@ -153,16 +154,14 @@ class PromoContentContainer extends Component {
   }
 }
 
-      //displayable={store.getState().displayable}
-
 export default PromoContentContainer;
 
 // render featured products
 ReactDOM.render(
-  <PromoContentContainer content={featuredProducts} mediaType={MEDIA_TYPE_IMAGE} contentType="featuredProducts"/>,
+  <PromoContentContainer content={featuredProducts} mediaType={MEDIA_TYPE.IMAGE} contentType="featuredProducts"/>,
   document.getElementById('promo-products')
 );
 
 //r render featured videos
-ReactDOM.render(<PromoContentContainer content={featuredVideos} mediaType={MEDIA_TYPE_VIDEO} contentType="featuredVideos"/>,
+ReactDOM.render(<PromoContentContainer content={featuredVideos} mediaType={MEDIA_TYPE.VIDEO} contentType="featuredVideos"/>,
   document.getElementById('promo-videos'));

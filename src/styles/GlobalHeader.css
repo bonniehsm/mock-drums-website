@@ -22,17 +22,18 @@ ul {
 }
 .global-nav-list li a:hover{
   color: #fff;
+  background-color: #262626;
 }
 
 /* Customize flex items*/
-#gn-products, #gn-support, #gn-artists, #gn-blog, #gn-company{
+#gn-products, #gn-support, #gn-artists, #gn-blog, #gn-newsevents, #gn-company, #gn-account {
   margin-right: auto;
 }
 
-#gn-brand {
+#gn-logo {
   background-color: #ff5a00;
 }
-#gn-brand a {
+#gn-logo a {
   color: #fff;
 }
 
@@ -52,6 +53,20 @@ nav.global-nav ul li a {
 .global-nav li > a{
   text-transform: uppercase;
   position: relative;
+}
+
+#gn-account {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#gn-account a {
+  padding: 0px;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 30px;
 }
 
 .subMenuContainer {
