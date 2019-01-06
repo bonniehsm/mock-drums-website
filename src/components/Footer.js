@@ -10,6 +10,11 @@ function FooterLegalLinks(props){
       <ul className="gf-legal-list">
         {links}
       </ul>
+      <div className="icon-credits">
+        <p>
+          Icons made by <a href="http://creativecommons.org/licenses/by/3.0/" title="CC 3.0 BY" target="_blank">CC 3.0 BY</a> from www.flaticon.com
+        </p>
+       </div>
     </div>
   )
 }
