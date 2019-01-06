@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import '../../src/styles/GlobalHeader.css';
 
 function SubMenuListItems(props){
-  console.log(`SubMenuListItems ${props.items}`);
   const items = props.items;
   const listItems = items.map((item, index) => {
     var classes = "subMenuListItems menu-col" + (index < 6 ? "-1" : "-2");
@@ -29,7 +28,6 @@ function GlobalHeaderNavigation(props){
 
   //iterate over keys in the navigation object and for each item, return a list item element
   const navTop = Object.keys(list).map((item, index) => {
-    console.log(item);
       var elementId = "gn-" + item;
       return (
         <li key={`gn-${item}`} id={elementId}>

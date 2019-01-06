@@ -128,6 +128,7 @@ let loggedOutMenuItems = [
   "Online Store",
 ]
 */
+
 class GlobalHeader extends Component {
   constructor(props){
     super(props);
@@ -158,8 +159,11 @@ class GlobalHeader extends Component {
   //this function receives an index of the global header item being hovered over and updates hover state to blank if a submenu is present
   hoverOff(index){
     var relatedTarget = event.relatedTarget.className;
-    var elementId = `sm-${index}`;
-    if(relatedTarget !== "subMenu"){
+    if(relatedTarget == "subMenu"){
+      return;
+    }else if(relatedTarget == "global-nav-list"){
+      return;
+    }else{
       this.setState({hover:""});
     }
   }

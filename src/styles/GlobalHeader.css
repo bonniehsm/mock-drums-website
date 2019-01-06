@@ -20,9 +20,9 @@ ul {
 .global-nav-list li a{
   color: #ccc;
 }
-.global-nav-list li a:hover{
-  color: #fff;
-  background-color: #262626;
+
+a:hover {
+  color: #999;
 }
 
 /* Customize flex items*/
@@ -37,14 +37,14 @@ ul {
   color: #fff;
 }
 
-a:hover {
-  color: #999;
+#gn-products a:hover, #gn-support a:hover, #gn-artists a:hover, #gn-blog a:hover, #gn-newsevents a:hover, #gn-company a:hover {
+  color: #fff;
+  background-color: #262626;
 }
 
 nav.global-nav ul li a {
   display: block;
   padding: 30px;
-  margin-top:3px;
   line-height: 1;
   text-decoration: none;
   font-size: 0.77rem;
