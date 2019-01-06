@@ -23,6 +23,20 @@
   max-height: 100%;
 }
 
+.content-tile figcaption {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;    /* to keep aspect ratio 16:9 */
+}
+
+.content-tile figcaption iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .content-label {
   letter-spacing: 0.6px;
 }

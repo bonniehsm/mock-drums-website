@@ -1,3 +1,5 @@
+$orange: #ff5a00;
+
 ul {
   margin: 0px;
   padding: 0px;
@@ -15,10 +17,11 @@ ul {
   flex-direction: row;
   justify-content: space-between;
   background-color: #000;
-}
 
-.global-nav-list li a{
-  color: #ccc;
+  li a {
+    color: #ccc;
+  }
+
 }
 
 a:hover {
@@ -31,10 +34,10 @@ a:hover {
 }
 
 #gn-logo {
-  background-color: #ff5a00;
-}
-#gn-logo a {
-  color: #fff;
+  background-color: $orange;
+
+  a { color: #fff; }
+
 }
 
 #gn-products a:hover, #gn-support a:hover, #gn-artists a:hover, #gn-blog a:hover, #gn-newsevents a:hover, #gn-company a:hover {
@@ -48,20 +51,14 @@ nav.global-nav ul li a {
   line-height: 1;
   text-decoration: none;
   font-size: 0.77rem;
-}
-
-.global-nav li > a{
   text-transform: uppercase;
-  /*position: relative;*/
+
 }
 
 #gn-account {
   margin-top: auto;
   margin-bottom: auto;
-}
-
-#gn-account a {
-  padding: 0px;
+  a { padding: 0px; }
 }
 
 .menu-icon {
