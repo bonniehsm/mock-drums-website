@@ -84,6 +84,12 @@ const loggedOutMenuItems = {
     "Find a Dealer",
     "Online Store",
   ]
+};
+
+const hamburgMenu = {
+  type: DISPLAY_TYPE.ICON,
+  display: "../../src/images/icons/nav-menu.svg",
+  submenu: null,
 }
 
 /*
@@ -133,9 +139,12 @@ class GlobalHeader extends Component {
   constructor(props){
     super(props);
     this.state = {
+      logo: props.logo,
       menu: props.menu,
       loggedIn: props.loggedIn,
       hover: "",
+      account: props.account,
+      hamburgerMenu: props.hamburgMenu
     };
     this.hoverOn = this.hoverOn.bind(this);
     this.hoverOff = this.hoverOff.bind(this);
@@ -171,7 +180,10 @@ class GlobalHeader extends Component {
   render(){
     const { menu, loggedIn, hover } = this.state;
     return(
-      <GlobalHeaderNavigation list={menu} loggedIn={loggedIn} hover={hover} mouseOver={this.hoverOn} mouseLeave={this.hoverOff}/>
+      <GlobalHeaderNavigation
+        list={menu} loggedIn={loggedIn} logo={this.state.logo} account={this.state.account}
+        hover={hover} mouseOver={this.hoverOn} mouseLeave={this.hoverOff} hamburgMenu={this.state.hamburgerMenu}
+      />
     );
   }
 }
@@ -182,21 +194,29 @@ class GlobalHeaderContainer extends Component {
     this.state = {
       loggedIn: false,
       navMenu: {
-        logo,
+        //logo,
         products,
         support,
         artists,
         blog,
         newsevents,
         company,
-        account: this.loggedIn ? loggedInMenuItems : loggedOutMenuItems
+        //account: this.loggedIn ? loggedInMenuItems : loggedOutMenuItems
       }
       //navMenu: globalHeader,
+
     }
   }
   render() {
+    const account = this.state.loggedIn ? loggedInMenuItems : loggedOutMenuItems;
     return(
-      <GlobalHeader menu={this.state.navMenu} loggedIn={this.state.loggedIn}/>
+      <GlobalHeader
+        menu={this.state.navMenu}
+        loggedIn={this.state.loggedIn}
+        logo={logo}
+        account={account}
+        hamburgMenu={hamburgMenu}
+      />
     );
   }
 }

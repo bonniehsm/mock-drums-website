@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import '../../src/styles/PromoContentCarousel.css';
 
 function ContentTile(props){
@@ -69,6 +68,7 @@ class PromoContentCarousel extends Component {
               {contentRow}
           </ul>
         <button className="slick-next slick-arrow" aria-label="Next" type="button" onClick={(e)=>this.props.slide("next", e)}>&gt;</button>
+        <div className="content-boundary"></div>
       </div>
     );
   }

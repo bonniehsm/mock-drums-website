@@ -15,6 +15,8 @@ ul {
   flex-direction: row;
   justify-content: space-between;
   background-color: #000;
+  margin-right: auto;
+  flex-grow: 1;
 }
 .global-nav-list li a {
   color: #ccc;
@@ -24,6 +26,10 @@ a:hover {
   color: #999;
 }
 
+.global-nav {
+  display: flex;
+}
+
 /* Customize flex items*/
 #gn-products, #gn-support, #gn-artists, #gn-blog, #gn-newsevents, #gn-company, #gn-account {
   margin-right: auto;
@@ -31,9 +37,16 @@ a:hover {
 
 #gn-logo {
   background-color: #ff5a00;
+  width: 130px;
+  text-align: center;
+  display: table;
+  height: 72px;
 }
 #gn-logo a {
   color: #fff;
+  display: table-cell;
+  vertical-align: middle;
+  text-transform: uppercase;
 }
 
 #gn-products a:hover, #gn-support a:hover, #gn-artists a:hover, #gn-blog a:hover, #gn-newsevents a:hover, #gn-company a:hover {
@@ -58,9 +71,15 @@ nav.global-nav ul li a {
   padding: 0px;
 }
 
+#top-right-icons {
+  align-self: center;
+  margin-right: 20px;
+}
+
 .menu-icon {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
+  margin: 0 10px;
 }
 
 .subMenuContainer {
@@ -123,6 +142,11 @@ nav.global-nav ul li a {
 @keyframes showSubMenu {
   100% {
     top: 0px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .global-nav-list {
+    flex-direction: column;
   }
 }
 
