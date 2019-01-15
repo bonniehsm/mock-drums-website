@@ -84,6 +84,12 @@ const loggedOutMenuItems = {
     "Find a Dealer",
     "Online Store",
   ]
+};
+
+const hamburgMenu = {
+  type: DISPLAY_TYPE.ICON,
+  display: "../../src/images/icons/nav-menu.svg",
+  submenu: null,
 }
 
 /*
@@ -133,12 +139,17 @@ class GlobalHeader extends Component {
   constructor(props){
     super(props);
     this.state = {
+      showMenu: false,
+      logo: props.logo,
       menu: props.menu,
       loggedIn: props.loggedIn,
       hover: "",
+      account: props.account,
+      hamburgerMenu: props.hamburgMenu
     };
     this.hoverOn = this.hoverOn.bind(this);
     this.hoverOff = this.hoverOff.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   //this function receives an index of the global header item being hovered over and updates the hover state with that element's id
@@ -168,10 +179,20 @@ class GlobalHeader extends Component {
     }
   }
 
+  toggleMenu(){
+    this.setState(prevState => ({
+      showMenu: !prevState.showMenu
+    }));
+  }
+
   render(){
     const { menu, loggedIn, hover } = this.state;
     return(
-      <GlobalHeaderNavigation list={menu} loggedIn={loggedIn} hover={hover} mouseOver={this.hoverOn} mouseLeave={this.hoverOff}/>
+      <GlobalHeaderNavigation
+        list={menu} loggedIn={loggedIn} logo={this.state.logo} account={this.state.account}
+        hamburgMenu={this.state.hamburgerMenu} showMenu={this.state.showMenu}
+        hover={hover} mouseOver={this.hoverOn} mouseLeave={this.hoverOff} toggleMenu={this.toggleMenu}
+      />
     );
   }
 }
@@ -182,21 +203,29 @@ class GlobalHeaderContainer extends Component {
     this.state = {
       loggedIn: false,
       navMenu: {
-        logo,
+        //logo,
         products,
         support,
         artists,
         blog,
         newsevents,
         company,
-        account: this.loggedIn ? loggedInMenuItems : loggedOutMenuItems
+        //account: this.loggedIn ? loggedInMenuItems : loggedOutMenuItems
       }
       //navMenu: globalHeader,
+
     }
   }
   render() {
+    const account = this.state.loggedIn ? loggedInMenuItems : loggedOutMenuItems;
     return(
-      <GlobalHeader menu={this.state.navMenu} loggedIn={this.state.loggedIn}/>
+      <GlobalHeader
+        menu={this.state.navMenu}
+        loggedIn={this.state.loggedIn}
+        logo={logo}
+        account={account}
+        hamburgMenu={hamburgMenu}
+      />
     );
   }
 }
