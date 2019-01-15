@@ -139,6 +139,7 @@ class GlobalHeader extends Component {
   constructor(props){
     super(props);
     this.state = {
+      showMenu: false,
       logo: props.logo,
       menu: props.menu,
       loggedIn: props.loggedIn,
@@ -148,6 +149,7 @@ class GlobalHeader extends Component {
     };
     this.hoverOn = this.hoverOn.bind(this);
     this.hoverOff = this.hoverOff.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   //this function receives an index of the global header item being hovered over and updates the hover state with that element's id
@@ -177,12 +179,19 @@ class GlobalHeader extends Component {
     }
   }
 
+  toggleMenu(){
+    this.setState(prevState => ({
+      showMenu: !prevState.showMenu
+    }));
+  }
+
   render(){
     const { menu, loggedIn, hover } = this.state;
     return(
       <GlobalHeaderNavigation
         list={menu} loggedIn={loggedIn} logo={this.state.logo} account={this.state.account}
-        hover={hover} mouseOver={this.hoverOn} mouseLeave={this.hoverOff} hamburgMenu={this.state.hamburgerMenu}
+        hamburgMenu={this.state.hamburgerMenu} showMenu={this.state.showMenu}
+        hover={hover} mouseOver={this.hoverOn} mouseLeave={this.hoverOff} toggleMenu={this.toggleMenu}
       />
     );
   }

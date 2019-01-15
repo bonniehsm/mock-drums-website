@@ -50,12 +50,12 @@ function GlobalHeaderNavigation(props){
     <div className="global-header">
       <nav className="global-nav">
         <div id="gn-logo"><a href="#">{props.logo.display}</a></div>
-        <ul className="global-nav-list">
+        <ul className="global-nav-list" id={props.showMenu==true?"showMenu":""}>
           {navTop}
         </ul>
-        <div id="top-right-icons">
-          <img className="menu-icon" src={props.account.display}/>
-          <img className="menu-icon" src={props.hamburgMenu.display}/>
+        <div className="top-right-icons">
+          <img id="account-menu-icon" src={props.account.display}/>
+          <img id="hamburger-menu-icon" onClick={props.toggleMenu} src={props.hamburgMenu.display}/>
         </div>
       </nav>
       {subMenu}

@@ -1,4 +1,8 @@
 $orange: #ff5a00;
+$header-height: 72px;
+$dark-gray: #666;
+$light-gray: #ccc;
+$header-nav-height: 432px;
 
 ul {
   margin: 0px;
@@ -19,11 +23,9 @@ ul {
   background-color: #000;
   margin-right: auto;
   flex-grow: 1;
-
   li a {
-    color: #ccc;
+    color: $dark-gray;
   }
-
 }
 
 a:hover {
@@ -44,7 +46,7 @@ a:hover {
   width: 130px;
   text-align: center;
   display: table;
-  height: 72px;
+  height: $header-height;
   a {
     color: #fff;
     display: table-cell;
@@ -54,7 +56,7 @@ a:hover {
 }
 
 #gn-products a:hover, #gn-support a:hover, #gn-artists a:hover, #gn-blog a:hover, #gn-newsevents a:hover, #gn-company a:hover {
-  color: #fff;
+  color: $light-gray;
   background-color: #262626;
 }
 
@@ -65,7 +67,6 @@ nav.global-nav ul li a {
   text-decoration: none;
   font-size: 0.77rem;
   text-transform: uppercase;
-
 }
 
 #gn-account {
@@ -74,14 +75,21 @@ nav.global-nav ul li a {
   a { padding: 0px; }
 }
 
-#top-right-icons {
+.top-right-icons {
   align-self: center;
   margin-right: 20px;
+  #hamburger-menu-icon {
+    display: none;
+  }
 }
 
-.menu-icon {
-  width: 30px;
-  height: 30px;
+.top-right-icons {
+  img{
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
 }
 
 .subMenuContainer {
@@ -114,7 +122,6 @@ nav.global-nav ul li a {
   padding: 10px 0px;
   width: 30%;
   max-width: 300px;
-
   &:hover {
     background-color: #e5e5e5;
   }
@@ -147,8 +154,28 @@ nav.global-nav ul li a {
   100% { top: 0px; }
 }
 
+#showMenu {
+  top: $header-height;
+}
+
 @media only screen and (max-width: 1000px) {
   .global-nav-list {
     flex-direction: column;
+    position: absolute;
+    top: calc(-#{$header-height} - #{$header-nav-height});
+    z-index: 100;
+    width: 100%;
+    li {
+      width: 100%;
+      text-align: center;
+      &:hover { background-color: #fff; }
+    }
+  }
+  .top-right-icons {
+    display: flex;
+    margin-left: auto;
+    #hamburger-menu-icon{
+      display: block;
+    }
   }
 }
