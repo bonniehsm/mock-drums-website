@@ -83,7 +83,8 @@ class PromoContentContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      displayable: [0, 1, 2],
+      displayable: [0, 1, 2],   //default is to display 3
+      numShown: 3
     }
     this.navigateSlide = this.navigateSlide.bind(this);
     this.checkIfEndOfSlide = this.checkIfEndOfSlide.bind(this);

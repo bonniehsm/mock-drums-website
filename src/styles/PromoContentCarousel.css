@@ -70,16 +70,28 @@
 }
 
 /** Flex items order **/
-.order-1 {
+.order-0 {
   order: 1;
 }
 
-.order-2 {
+.order-1 {
   order: 2;
 }
 
-.order-3 {
+.order-2 {
   order: 3;
+}
+
+/** Media Queries **/
+@media only screen and (max-width: 1000px) {
+  .order-1 {
+    display: none;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .order-2 {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=PromoContentCarousel.css.map */

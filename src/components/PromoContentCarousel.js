@@ -42,6 +42,7 @@ class PromoContentCarousel extends Component {
   render(){
     var content = this.props.content;
     var contentTileId = `${this.props.contentType}-card`;
+    //for each content, determine which to show or hide and the display order
     var contentRow = content.map((item, index)=>{
       var display = this.props.displayable.includes(index) ? "show" : "hide";
       var displayOrder;
